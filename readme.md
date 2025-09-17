@@ -27,8 +27,12 @@
 ## Running the app
 
     ```bash
-    .\mvnw spring-boot:run  or
-    mvn spring-boot:run
+    .\mvnw spring-boot:run  
+    ```
+    for test
+    
+    ```bash
+    ./mvnw test
     ```
     and go to http://localhost:8080/
 
