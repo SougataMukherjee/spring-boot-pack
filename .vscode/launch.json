@@ -2,6 +2,12 @@
   "configurations": [
     {
       "type": "java",
+      "name": "EmpCrudApplication",
+      "request": "launch",
+      "mainClass": "org.sam.emp_crud.EmpCrudApplication"
+    },
+    {
+      "type": "java",
       "name": "Spring Boot-DemoApplication<demo>",
       "request": "launch",
       "cwd": "${workspaceFolder}",
