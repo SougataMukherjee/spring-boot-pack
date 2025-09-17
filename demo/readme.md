@@ -18,7 +18,7 @@
    Spring Boot Extension Pack
 
 5. **Set up inside VS Code**
-    ctrl+shift+p in vs code and select "spring Initializer: create a maven project"
+    ctrl+shift+p in vs code and select "spring Initializer: create a maven project"  or go to spring initializer https://start.spring.io/ and generate
 
 ## Running the app
     ```bash
