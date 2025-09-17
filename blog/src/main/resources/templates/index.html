@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Blog List</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+<h1>Blog List</h1>
+<div class="grid-container">
+    <div class="card" th:each="blog : ${blogs}">
+        <img th:src="${blog.imageUrl}" alt="Blog Image"/>
+        <h2 th:text="${blog.title}"></h2>
+        <p th:text="${blog.description.length() > 100 ? blog.description.substring(0,100) + '...' : blog.description}"></p>
+        <a th:href="@{'/blog/' + ${blog.id}}" class="btn">View Details</a>
+    </div>
+</div>
+</body>
+</html>
