@@ -16,6 +16,7 @@
 4. **Install VS Code Extensions**
    Extension Pack for Java
    Spring Boot Extension Pack
+   thunder client
 
 5. **Set up inside VS Code**
    ctrl+shift+p in vs code and select or go to spring initializer https://start.spring.io/ and generate
