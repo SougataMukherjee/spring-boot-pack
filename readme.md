@@ -154,3 +154,28 @@ for (int i = 0; i < names.size(); i++) {
 }
 
 ```
+
+11. @Service , @Controller and @Entity
+    Marks a class as a service component (business logic layer) so Spring can auto-detect it and register it as a bean.
+
+```bash
+@Service
+public class EmployeeService { /* business logic */ }
+
+```
+
+Marks a class as a Spring MVC controller to handle web requests and return views or responses.
+
+```bash
+@Controller
+public class EmployeeController { /* request mappings */ }
+
+```
+
+Marks a class as a JPA entity that maps to a database table.
+
+```bash
+@Entity
+public class Employee { /* fields map to columns */ }
+
+```
