@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Employee CRUD</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Employee CRUD Demo</h1>
+  <form id="empForm">
+    <input type="text" name="name" placeholder="Name">
+    <input type="text" name="phone" placeholder="Phone">
+    <input type="email" name="email" placeholder="Email">
+    <button type="submit">Add Employee</button>
+  </form>
+
+  <ul id="empList"></ul>
+
+<script>
+const form = document.getElementById('empForm');
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const data = {
+    name: form.name.value,
+    phone: form.phone.value,
+    email: form.email.value
+  };
+  fetch('/employees', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify(data)
+  }).then(()=>loadEmployees());
+});
+
+function loadEmployees() {
+  fetch('/employees')
+    .then(res=>res.json())
+    .then(data=>{
+      const list=document.getElementById('empList');
+      list.innerHTML='';
+      data.forEach(emp=>{
+        const li=document.createElement('li');
+        li.textContent=`${emp.id}: ${emp.name} (${emp.phone})`;
+        list.appendChild(li);
+      });
+    });
+}
+
+loadEmployees();
+</script>
+</body>
+</html>
