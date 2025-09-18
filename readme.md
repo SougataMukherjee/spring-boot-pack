@@ -111,6 +111,50 @@ class MyController {
   - Throw an exception if empty: `optional.orElseThrow()`
 - In Spring Boot, you often see `Optional` used in repository queries to handle not-found database results safely.
 
+### Array
+- A fixed-size container that holds elements of the **same type** (e.g. `String[]`, `int[]`).
+- Size must be known at creation; cannot grow or shrink.
+- Best when you know the exact number of items and won’t change it.
+- Example idea: an array of 7 days of the week.
+
+### List
+- An **interface** that represents an **ordered collection** of elements.
+- Allows duplicates; preserves insertion order.
+- You can add, remove, or access elements by index.
+- Common implementations are `ArrayList` and `LinkedList`.
+
+### ArrayList
+- A resizable array implementation of `List`.
+- Grows automatically as you add elements.
+- Allows duplicates; preserves order.
+- Fast for reading by index; slower for many insertions in the middle.
+- Example idea: a dynamic list of students’ names.
+
+### Set
+- A collection that contains **no duplicate elements**.
+- Order is not guaranteed (depends on implementation).
+- Used when you only care about **uniqueness**.
+- Common implementations: `HashSet` (no order), `LinkedHashSet` (insertion order), `TreeSet` (sorted order).
+- Example idea: storing unique email addresses.
+
+### Map
+- A collection of **key–value pairs**.
+- Each key maps to exactly one value; keys must be unique.
+- Useful for lookups by a unique identifier.
+- Common implementations: `HashMap` (no order), `LinkedHashMap` (insertion order), `TreeMap` (sorted by key).
+- Example idea: mapping a student ID (key) to student details (value).
+
+---
+
+### Where to Use What
+- **Array of strings / numbers** → use `String[]` or `int[]` if size fixed; use `ArrayList<String>` or `ArrayList<Integer>` if size changes.
+- **Array of unique values** → use a `Set` (e.g. `HashSet<String>`).
+- **Array of key–value pairs** → use a `Map` (e.g. `HashMap<String, Integer>`).
+- **Need ordering + duplicates** → use `List` / `ArrayList`.
+- **Need uniqueness only** → use `Set`.
+- **Need fast key-based lookup** → use `Map`.
+
+
 
 3. Implements vs Extends
 
