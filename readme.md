@@ -27,10 +27,10 @@
 ## Running the app
 
     ```bash
-    .\mvnw spring-boot:run  
+    .\mvnw spring-boot:run
     ```
     for test
-    
+
     ```bash
     ./mvnw test
     ```
@@ -54,12 +54,65 @@ class MyController {
 }
 ```
 
-3. @Component + @Autowired
-   @Component marks a class as a Spring bean.
-   @Autowired tells Spring to inject a bean here.
-   Together they wire dependencies automatically
+### Classes in Spring Boot
 
-4. Implements vs Extends
+- A class is like a blueprint that describes how an object behaves. It can hold data (variables) and actions (methods).
+
+- In Spring Boot, classes often represent services, controllers, or configurations.
+
+- You create an object (an instance) of a class so you can use its methods. Spring does this for you automatically using @Component, @Service, @Controller etc.
+
+- With Spring’s @Autowired, you don’t manually create objects. Spring sees your class annotated as a bean and automatically “injects” the object wherever you need it.
+
+- In a class you can make variables or methods public, private, or static to control who can use them.
+
+- You can still use @Override if you’re overriding a method from a parent class, but it’s optional (Java will still allow overriding without it, but the annotation helps catch mistakes).
+
+### Interfaces in Spring Boot
+
+- An interface is like a contract: it only lists method names (no actual code inside) that any class agreeing to the contract must implement.
+
+- In Spring Boot, interfaces are often used for repositories (like JpaRepository) or service layers.
+
+- Interfaces don’t create objects themselves. A class must implement the interface. Spring then creates the actual object (bean) of the implementing class automatically and injects it where needed with @Autowired.
+
+- All methods in an interface are implicitly public and abstract (no body). You don’t need to write public every time.
+
+- You cannot have instance variables in an interface (only constants static final).
+
+- When a class implements an interface, you almost always use @Override on each method to show you’re implementing the interface’s contract.
+
+- Interfaces themselves don’t use annotations like @Service directly, but the implementing class does.
+### Looping in Spring Boot
+- Spring Boot uses standard Java constructs for loops. You can use `for`, `while`, or `do-while` loops exactly as in plain Java.
+- With Java 8, you can use the **Stream API** to loop through collections in a functional way (no explicit `for` loop).
+- Example in theory: instead of a traditional loop to process a list, you call `list.stream().forEach(...)` to handle each item.
+
+### Using Java 8 Lambdas in Spring Boot
+- A **lambda** is a short way to write a function (no separate method needed).
+- In Spring Boot you often use lambdas with:
+  - **Streams**: `list.stream().filter(x -> x.isActive())`
+  - **Callbacks**: for asynchronous or event-based code.
+  - **Functional interfaces** like `Runnable`, `Consumer`, or custom interfaces.
+- Lambdas make your code more concise and readable inside Spring Boot services or controllers.
+
+### Conditional Logic (if-else) in Spring Boot
+- You use `if`, `else if`, and `else` exactly like in Java.
+- You can also use **ternary operators** for shorter conditions: `condition ? valueIfTrue : valueIfFalse`.
+- In templates (like Thymeleaf) you can also write conditional expressions to show or hide UI parts, but it still follows the same Java-style logic.
+
+### Handling Null Values with `Optional`
+- `Optional` is a Java 8 class designed to represent a value that might be present or absent (null).
+- Instead of returning `null`, methods return `Optional<T>`. This forces you to handle the absence explicitly.
+- You can check:
+  - `optional.isPresent()` or `optional.ifPresent(value -> ...)`
+  - Provide a default: `optional.orElse(defaultValue)`
+  - Provide a fallback action: `optional.orElseGet(() -> computeValue())`
+  - Throw an exception if empty: `optional.orElseThrow()`
+- In Spring Boot, you often see `Optional` used in repository queries to handle not-found database results safely.
+
+
+3. Implements vs Extends
 
 extends = inherit code/behaviour from a class.
 implements = promise to follow a contract/interface.
@@ -72,6 +125,12 @@ interface Doable { void doWork(); }
 class Worker implements Doable { public void doWork(){} }
 
 ```
+4. @Component + @Autowired
+   @Component marks a class as a Spring bean.
+   @Autowired tells Spring to inject a bean here.
+   Together they wire dependencies automatically
+
+
 
 5. Beans
 
